@@ -1,3 +1,5 @@
+/* package whatever; // don't place package name! */
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -8,9 +10,11 @@ class DeleteDigits
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		Scanner s = new Scanner(System.in);
-		Integer n, r, k;
+		Integer n, r, k, x;
 		n = s.nextInt();
 		k = s.nextInt();
+		x = n;
+		n = Math.abs(n);
 		List<Integer> rem = new ArrayList();
 		while(n > 0)
 		{
@@ -18,7 +22,17 @@ class DeleteDigits
 			n = n / 10;
 		}
 		Collections.sort(rem);
-		for(int i = 0; i < rem.size() - k; i++)
-			System.out.print(rem.get(i)); 
+		if(x > 0)
+		{
+			for(int i = 0; i < rem.size() - k; i++)
+				System.out.print(rem.get(i)); 
+		}
+		else
+		{
+			System.out.print('-');
+			Collections.reverse(rem);
+			for(int i = 0; i < rem.size() - k; i++)
+				System.out.print(rem.get(i)); 
+		}
 	}
 }
